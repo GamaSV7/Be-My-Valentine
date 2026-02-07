@@ -2,64 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>¿Quieres ser mi Valentín?</title>
-
+    <title>¿Quieres ser mi Valentín? 💖</title>
     <style>
         body {
-            background-color: #ffe6eb;
-            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(#ff9a9e, #fad0c4);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            font-family: Arial, sans-serif;
             overflow: hidden;
         }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
         h1 {
-            color: #e6005c;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 40px;
         }
 
         button {
-            padding: 12px 25px;
-            margin: 10px;
-            font-size: 18px;
+            font-size: 1.2em;
+            padding: 15px 30px;
             border: none;
-            border-radius: 15px;
+            border-radius: 30px;
             cursor: pointer;
-        }
-
-        .yes {
-            background-color: #ff4d88;
-            color: white;
-        }
-
-        .no {
-            background-color: #cccccc;
             position: relative;
         }
 
-        /* 💕 Corazones */
+        #si {
+            background-color: #ff4d6d;
+            color: white;
+            margin-right: 20px;
+        }
+
+        #no {
+            background-color: #ccc;
+        }
+
         .heart {
-            position: fixed;
-            color: #ff4d88;
-            animation: float 4s linear infinite;
+            position: absolute;
+            color: pink;
+            font-size: 24px;
+            animation: float 3s linear infinite;
         }
 
         @keyframes float {
             0% {
-                bottom: 0;
+                transform: translateY(0);
                 opacity: 1;
             }
             100% {
-                bottom: 100vh;
+                transform: translateY(-200px);
                 opacity: 0;
             }
         }
@@ -67,14 +62,42 @@
 </head>
 <body>
 
-<div class="card">
-    <h1>¿Quieres ser mi Valentín? 💖</h1>
-    <button class="yes" onclick="acepto()">Sí 💘</button>
-    <button class="no">No 🙈</button>
+<h1>¿Quieres ser mi Valentín? 💕</h1>
+
+<div>
+    <button id="si" onclick="acepto()">Sí 💘</button>
+    <button id="no" onmouseover="huir()">No 💔</button>
 </div>
 
+<audio id="musica" src="cancion.mp3"></audio>
+
 <script>
+    function huir() {
+        const no = document.getElementById("no");
+        const x = Math.random() * (window.innerWidth - no.offsetWidth);
+        const y = Math.random() * (window.innerHeight - no.offsetHeight);
+        no.style.position = "absolute";
+        no.style.left = x + "px";
+        no.style.top = y + "px";
+    }
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💕";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 3000);
+    }
+
     function acepto() {
+        const musica = document.getElementById("musica");
+        musica.play();
+
         for (let i = 0; i < 30; i++) {
             createHeart();
         }
@@ -83,26 +106,6 @@
             window.location.href = "sorpresa.html";
         }, 1500);
     }
-
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "🩵";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = Math.random() * 20 + 20 + "px";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 4000);
-    }
-
-    const noBtn = document.querySelector(".no");
-    noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * 300 - 150;
-        const y = Math.random() * 300 - 150;
-        noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
 </script>
 
 </body>
