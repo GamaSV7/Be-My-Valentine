@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi Valentín?</title>
+    <style>
+        body {
+            background-color: #ffe6eb;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e6005c;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .yes {
+            background-color: #ff4d88;
+            color: white;
+        }
+
+        .no {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>¿Quieres ser mi Valentín? 💖</h1>
+    <button class="yes" onclick="acepto()">Sí 💘</button>
+    <button class="no" onclick="rechazo()">No 🙈</button>
+</div>
+
+<script>
+    function acepto() {
+        alert("¡Sabía que dirías que sí! 💕🥰");
+    }
+
+    function rechazo() {
+        alert("Bueno… lo intenté 😭");
+    }
+</script>
+
+</body>
+</html>
